@@ -5,15 +5,20 @@
   "author": "Leioy <Leioy9312@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack serve --config build/webpack.config.js"
+    "dev": "webpack-dev-server --config build/webpack.config.js"
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.0.3",
+    "css-loader": "^5.0.1",
     "html-webpack-plugin": "^4.5.0",
+    "less": "^3.12.2",
+    "less-loader": "^7.1.0",
+    "style-loader": "^2.0.0",
     "vue": "^3.0.3",
     "vue-loader": "16.0.0",
-    "webpack": "^5.8.0",
-    "webpack-cli": "^4.2.0",
+    "vue-router": "^4.0.0-rc.5",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   }
 }
