@@ -9,7 +9,7 @@ module.exports = {
 		overlay: true,
 	},
 	entry: {
-		app: path.join(__dirname, '../examples/main.js'),
+		app: path.join(__dirname, '../examples/main.ts'),
 	},
 	module: {
 		rules: [
@@ -21,13 +21,20 @@ module.exports = {
 				},
 			},
 			{
+				test: /\.tsx?$/,
+				loader: 'ts-loader',
+				options: {
+					appendTsSuffixTo: [ /\.vue$/ ],
+				},
+			},
+			{
 				test: /\.(le|c)ss$/,
-				loader: ['style-loader','css-loader','less-loader'],
-			}
+				loader: [ 'style-loader', 'css-loader', 'less-loader' ],
+			},
 		],
 	},
 	resolve: {
-		extensions: [ '.js', '.vue' ],
+		extensions: [ '.ts', '.tsx', '.js', '.vue' ],
 		alias: {
 			packages: path.resolve(__dirname, '../packages'),
 			examples: path.resolve(__dirname, '../examples'),
