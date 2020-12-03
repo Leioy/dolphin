@@ -10,7 +10,7 @@ module.exports = {
 	moduleNameMapper: {
 		'^packages/(.*)$': '<rootDir>/packages/$1',
 	},
-	collectCoverage: true,
+	collectCoverage: false,
 	collectCoverageFrom: [ 'packages/**/*.{vue,ts}', '!**/node_modules/**' ],
 	moduleFileExtensions: [ 'vue', 'js', 'json', 'jsx', 'ts', 'tsx', 'node' ],
 	coverageDirectory: 'coverage',

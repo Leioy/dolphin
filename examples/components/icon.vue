@@ -1,11 +1,5 @@
 <template>
-	<Icon />
+	<div class="container">
+		<dol-icon name="add" size="18" color="red"></dol-icon>
+	</div>
 </template>
-<script lang="ts">
-import Icon from 'packages/Icon/src/index.vue'
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-	components: { Icon },
-})
-</script>

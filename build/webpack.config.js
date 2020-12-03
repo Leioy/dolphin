@@ -29,7 +29,18 @@ module.exports = {
 			},
 			{
 				test: /\.(le|c)ss$/,
-				loader: [ 'style-loader', 'css-loader', 'less-loader' ],
+				use: [
+					{ loader: 'style-loader' },
+					{ loader: 'css-loader' },
+					{ loader: 'less-loader' },
+				],
+			},
+			{
+				test: /\.svg$/,
+				loader: 'svg-sprite-loader',
+				options: {
+					symbolId: 'icon-[name]',
+				},
 			},
 		],
 	},
