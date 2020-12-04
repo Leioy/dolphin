@@ -1,25 +1,58 @@
 <template>
-	<div class="button">button{{ a }}</div>
+	<button :class="classes" :disabled="disabled || loading" @click="handleClick">
+		<Icon v-if="loading" name="loading"></Icon>
+		<Icon v-if="icon && !loading" :name="icon"></Icon>
+		<span v-if="$slots.default"><slot></slot></span>
+	</button>
 </template>
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts">
+import { computed, defineComponent, PropType } from 'vue'
+import Icon from 'packages/Icon/src/index.vue'
 
+type TButtonType = PropType<'default' | 'primary' | 'info' | 'warning' | 'success' | 'error' | 'text'>
+type TButtonSize = PropType<'large' | 'small'>
 export default defineComponent({
-		name: 'Button',
+		name: 'DolButton',
+		components: { Icon },
 		props: {
-			msg: {
-				type: String,
-				default: 'hi',
+			type: {
+				type: String as TButtonType,
+				default: 'default',
+				validator: (val: string) => {
+					return [ 'default', 'primary', 'info', 'warning', 'success', 'error', 'text' ].includes(val)
+				},
 			},
+			size: {
+				type: String as TButtonSize,
+				validator: (val: string) => {
+					return [ 'large', 'small' ].includes(val)
+				},
+			},
+			icon: String,
+			round: Boolean,
+			loading: Boolean,
+			disabled: Boolean,
 		},
-		setup () {
-			const a = Math.random() * 10
-			if (a > 10) {
-				console.log('大于')
-			} else {
-				console.log('小于')
+		emits: [ 'click' ],
+		setup (props, { emit }) {
+			const handleClick = (e: MouseEvent) => {
+				emit('click', e)
 			}
-			return { a }
+			const { type, size, round, loading, disabled } = props
+			const classes = computed(() => {
+				return [
+					'dol-button',
+					`dol-button-${type}`,
+					size ? `dol-button-${size}` : '',
+					{
+						'dol-button-disabled': disabled,
+						'dol-button-loading': loading,
+						'dol-button-round': round,
+					},
+				]
+			})
+
+			return { classes, handleClick }
 		},
 	},
 )

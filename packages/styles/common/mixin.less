@@ -1,0 +1,23 @@
+.disabled-mixin (@color,@background,@border-color) {
+	position: relative;
+	color: @color;
+	background: @background;
+	border-color: @border-color;
+	cursor: not-allowed;
+}
+
+.overlay-mixin () {
+	&::before {
+		content: "";
+		display: block;
+		position: absolute;
+		top: -1px;
+		right: -1px;
+		bottom: -1px;
+		left: -1px;
+		background: #fff;
+		opacity: .35;
+		border-radius: inherit;
+		transition: opacity .25s;
+	}
+}
