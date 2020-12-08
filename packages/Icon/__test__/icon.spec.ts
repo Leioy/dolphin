@@ -5,32 +5,24 @@ describe('Icon.vue', () => {
 	test('render',() =>{
 		const wrapper = mount(Icon,{
 			props:{
-				name:'add'
+				name:'success'
 			},
 		})
-		expect(wrapper.find('.dol-icon').exists()).toBe(true)
-	})
-	test('accept name props', () => {
-		const wrapper = mount(Icon, {
-			props: {
-				name: 'add',
-			},
-		})
-		expect(wrapper.find('use').attributes('href')).toBe('#icon-add')
+		expect(wrapper.classes()).toContain('dol-icon-success')
 	})
 	test('accept props color', () => {
 		const wrapper = mount(Icon, {
 			props: {
-				name: 'add',
+				name: 'success',
 				color: 'red',
 			},
 		})
-		expect(wrapper.find('.dol-icon').attributes('style')).toBe('color: red;')
+		expect(wrapper.attributes('style')).toBe('color: red;')
 	})
 	test('accept props size', () => {
 		const wrapper = mount(Icon, {
 			props: {
-				name: 'add',
+				name: 'success',
 				size: '18',
 			},
 		})

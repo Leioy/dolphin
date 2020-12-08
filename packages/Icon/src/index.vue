@@ -1,7 +1,5 @@
 <template>
-	<svg class="dol-icon" :style="style">
-		<use :xlink:href="`#icon-${name}`"></use>
-	</svg>
+	<i :class="`dol-icon-${name}`" :style="style"></i>
 </template>
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
