@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "webpack-dev-server --config build/webpack.config.js",
     "test": "jest",
-    "build": "rollup --config build/rollup.config.js"
+    "build": "rollup --config build/rollup.config.js",
+    "build:styles": "gulp build --gulpfile build/gulpfile.js"
   },
   "peerDependencies": {
     "vue": "^3.0.3"
@@ -21,6 +22,11 @@
     "@vue/test-utils": "^2.0.0-beta.12",
     "css-loader": "^5.0.1",
     "file-loader": "^6.2.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-less": "^4.0.1",
+    "gulp-rename": "^2.0.0",
     "html-webpack-plugin": "^4.5.0",
     "jest": "^26.6.3",
     "less": "^3.12.2",
