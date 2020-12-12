@@ -2,7 +2,6 @@ import { App } from 'vue'
 import DolButton from 'packages/Button'
 import DolIcon from 'packages/Icon'
 import DolButtonGroup from 'packages/ButtonGroup'
-import 'packages/styles/index.less'
 
 const components = [
 	DolButton, DolIcon,DolButtonGroup
