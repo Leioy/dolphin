@@ -5,7 +5,21 @@ module.exports = {
 	testEnvironment: 'jsdom',
 	transform: {
 		'^.+\\.vue$': 'vue-jest',
-		'^.+\\js$': 'babel-jest',
+		'^.+\\.(t|j)sx?$': [
+			'babel-jest', {
+				presets: [
+					[
+						'@babel/preset-env',
+						{
+							targets: {
+								node: true,
+							},
+						},
+					],
+					'@babel/preset-typescript',
+				],
+			},
+		],
 	},
 	moduleNameMapper: {
 		'^packages/(.*)$': '<rootDir>/packages/$1',
