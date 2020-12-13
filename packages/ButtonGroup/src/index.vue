@@ -3,8 +3,12 @@
 		<slot></slot>
 	</div>
 </template>
-<script>
-export default {
-	name:'DolButtonGroup'
-}
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent(
+	{
+		name: 'DolButtonGroup',
+	},
+)
 </script>
