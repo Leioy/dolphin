@@ -11,16 +11,8 @@ module.exports = {
 				},
 			},
 			{
-				test: /\.tsx?$/,
-				use:[
-					'babel-loader',
-					{
-						loader: 'ts-loader',
-						options: {
-							appendTsSuffixTo: [ /\.vue$/ ],
-						},
-					}
-				],
+				test: /\.(ts|js)x?$/,
+				loader: 'babel-loader',
 			},
 			{
 				test: /\.(le|c)ss$/,

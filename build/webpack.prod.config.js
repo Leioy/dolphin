@@ -9,7 +9,7 @@ module.exports = merge(baseConfig, {
 		path: resolve('lib'),
 		library: 'dolphin',
 		libraryTarget: 'umd',
-		filename: 'index.min.js',
+		filename: 'index.js',
 		umdNamedDefine: true,
 	},
 	externals: {
