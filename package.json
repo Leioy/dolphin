@@ -4,7 +4,7 @@
 	"author": "Leioy <Leioy9312@gmail.com>",
 	"license": "MIT",
 	"scripts": {
-		"start": "webpack-dev-server --config build/webpack.dev.config.js",
+		"dev": "webpack-dev-server --config build/webpack.dev.config.js",
 		"test": "jest",
 		"build": "rollup --config build/rollup.config.js",
 		"build:umd": "cross-env BABEL_ENV=prod webpack --config build/webpack.prod.config.js",
