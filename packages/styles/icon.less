@@ -1,7 +1,8 @@
+@import "common/var";
 @font-face {
 	font-family: "dol-icon";
-	src: url('common/fonts/dolphin-icons.woff') format('woff'),
-			url('common/fonts/dolphin-icons.ttf') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+	src: url("@{font-path}/dolphin-icons.woff") format("woff"),
+	url("@{font-path}/dolphin-icons.ttf") format("truetype"); /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
 }
 
 [class^="dol-icon-"], [class*="dol-icon"] {
@@ -18,6 +19,7 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
 .dol-icon-ice-cream-round:before {
 	content: "\e6a0";
 }
