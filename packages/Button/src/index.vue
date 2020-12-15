@@ -1,19 +1,17 @@
 <template>
 	<button :class="classes" :disabled="disabled || loading" @click="handleClick">
-		<Icon v-if="loading" name="loading"></Icon>
-		<Icon v-if="icon && !loading" :name="icon"></Icon>
+		<i v-if="loading" class="dol-icon-loading"></i>
+		<i v-if="icon && !loading" :class="`dol-icon-${icon}`"></i>
 		<span v-if="$slots.default"><slot></slot></span>
 	</button>
 </template>
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue'
-import Icon from 'packages/Icon/src/index.vue'
 
 type TButtonType = PropType<'default' | 'primary' | 'info' | 'warning' | 'success' | 'error' | 'text'>
 type TButtonSize = PropType<'large' | 'small'>
 export default defineComponent({
 		name: 'DolButton',
-		components: { Icon },
 		props: {
 			type: {
 				type: String as TButtonType,
