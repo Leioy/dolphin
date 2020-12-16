@@ -14,3 +14,8 @@ const install = (app: App) => {
 export default {
 	install,
 }
+export {
+	DolButton,
+	DolIcon,
+	DolButtonGroup
+}
