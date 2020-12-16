@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import Button from '../src/index.vue'
-import ButtonGroup from 'packages/ButtonGroup/src/index.vue'
+import ButtonGroup from 'packages/button-group/src/index.vue'
 
 const slotsText = 'click'
 describe('Button', () => {

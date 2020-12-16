@@ -1,7 +1,7 @@
 import { App } from 'vue'
-import DolButton from 'packages/Button'
-import DolIcon from 'packages/Icon'
-import DolButtonGroup from 'packages/ButtonGroup'
+import DolButton from './button'
+import DolIcon from './icon'
+import DolButtonGroup from './button-group'
 
 const components = [
 	DolButton, DolIcon,DolButtonGroup

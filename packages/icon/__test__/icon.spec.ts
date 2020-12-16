@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
-import Icon from 'packages/Icon/src/index.vue'
+import Icon from 'packages/icon/src/index.vue'
 
-describe('Icon.vue', () => {
+describe('icon.vue', () => {
 	test('render',() =>{
 		const wrapper = mount(Icon,{
 			props:{
