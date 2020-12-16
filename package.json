@@ -6,7 +6,8 @@
 	"scripts": {
 		"dev": "webpack-dev-server --config build/webpack.dev.config.js",
 		"test": "jest",
-		"build": "yarn build:es && yarn build:comp && yarn build:umd && yarn build:styles",
+		"clean:lib": "rimraf lib",
+		"build": "yarn clean:lib && yarn build:es && yarn build:comp && yarn build:umd && yarn build:styles",
 		"build:es": "rollup --config build/rollup.config.js",
 		"build:comp": "rollup --config build/rollup.comp.config.js",
 		"build:umd": "cross-env BABEL_ENV=prod webpack --config build/webpack.prod.config.js",
@@ -43,6 +44,7 @@
 		"less": "^3.12.2",
 		"less-loader": "^7.1.0",
 		"progress-bar-webpack-plugin": "^2.1.0",
+		"rimraf": "^3.0.2",
 		"rollup": "^2.34.2",
 		"rollup-plugin-css-only": "^3.0.0",
 		"rollup-plugin-progress": "^1.1.2",
