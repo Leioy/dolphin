@@ -2,9 +2,11 @@ import { App } from 'vue'
 import DolButton from './button'
 import DolIcon from './icon'
 import DolButtonGroup from './button-group'
+import Tabs from './tabs/src/tabs.vue'
+import TabPane from './tabs/src/tab-pane.vue'
 
 const components = [
-	DolButton, DolIcon,DolButtonGroup
+	DolButton, DolIcon, DolButtonGroup, Tabs, TabPane,
 ]
 const install = (app: App) => {
 	components.forEach(component => {
@@ -17,5 +19,7 @@ export default {
 export {
 	DolButton,
 	DolIcon,
-	DolButtonGroup
+	DolButtonGroup,
+	Tabs,
+	TabPane,
 }

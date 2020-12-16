@@ -1,0 +1,64 @@
+@import "common/var";
+.dol-tabs {
+	overflow: hidden;
+	&__nav-wrap {
+		margin-bottom: 16px;
+		position: relative;
+		overflow: hidden;
+		&::after {
+			display: block;
+			content: "";
+			width: 100%;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			height: 1px;
+			background: #e4e7ed;
+			z-index: 1;
+		}
+	}
+	&__nav {
+		display: flex;
+		position: relative;
+		z-index: 2;
+	}
+	&__active {
+		&-bar {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			height: 2px;
+			background: @primary-color;
+			transition: width, transform .3s cubic-bezier(.645,.045,.355,1);
+		}
+	}
+	&__item {
+		padding: 12px 16px;
+		cursor: pointer;
+		transition: color .3s ease-in-out;
+		&:nth-child(2) {
+			padding-left: 0;
+		}
+		&:last-child {
+			padding-right: 0;
+		}
+		&.isActive {
+			font-weight: 500;
+			color: @primary-color;
+		}
+		&:hover {
+			color: lighten(@primary-color, 10%);
+		}
+	}
+	&__content {
+		display: flex;
+		width: 100%;
+		transition: transform .3s ease-in-out;
+	}
+	&__pane {
+		flex-shrink: 0;
+		width: 100%;
+		height: 0;
+		visibility: hidden;
+	}
+}
