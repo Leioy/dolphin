@@ -105,7 +105,7 @@ export default defineComponent({
 		onMounted(() => {
 			setPaneInstance()
 		})
-		return { panes, handleTabClick }
+		return { panes, handleTabClick, activeIndex }
 	},
 	render () {
 		const { panes, $slots, handleTabClick } = this
