@@ -2,8 +2,8 @@ import { App } from 'vue'
 import DolButton from './button'
 import DolIcon from './icon'
 import DolButtonGroup from './button-group'
-import Tabs from './tabs/src/tabs.vue'
-import TabPane from './tabs/src/tab-pane.vue'
+import Tabs from './tabs'
+import TabPane from './tab-pane'
 
 const components = [
 	DolButton, DolIcon, DolButtonGroup, Tabs, TabPane,
