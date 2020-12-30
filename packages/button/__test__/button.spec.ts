@@ -19,6 +19,7 @@ describe('Button', () => {
 			props: { icon: 'success' },
 		})
 		expect(wrapper.find('.dol-icon-success').exists()).toBe(true)
+		expect(wrapper.classes()).toContain('dol-button-iconOnly')
 	})
 	test('loading', async () => {
 		const wrapper = mount(Button, {

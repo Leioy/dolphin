@@ -1,7 +1,7 @@
 <template>
 	<button :class="classes" :disabled="disabled || loading" @click="handleClick">
-		<i v-if="loading" class="dol-icon-loading"></i>
-		<i v-if="icon && !loading" :class="`dol-icon-${icon}`"></i>
+		<i v-if="loading" class="dol-icon dol-icon-loading"></i>
+		<i v-if="icon && !loading" class="dol-icon" :class="`dol-icon-${icon}`"></i>
 		<span v-if="$slots.default"><slot></slot></span>
 	</button>
 </template>
@@ -32,17 +32,18 @@ export default defineComponent({
 			disabled: Boolean,
 		},
 		emits: [ 'click' ],
-		setup (props, { emit }) {
+		setup (props, { emit, slots }) {
 			const handleClick = (e: MouseEvent) => {
 				emit('click', e)
 			}
-			const { type, size, round, loading, disabled } = props
+			const { type, size, round, loading, disabled, icon } = props
 			const classes = computed(() => {
 				return [
 					'dol-button',
 					`dol-button-${type}`,
 					size ? `dol-button-${size}` : '',
 					{
+						'dol-button-iconOnly': !slots.default?.() && (loading || icon),
 						'dol-button-disabled': disabled,
 						'dol-button-loading': loading,
 						'dol-button-round': round,
