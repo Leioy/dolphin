@@ -1,5 +1,5 @@
 <template>
-	<i :class="`dol-icon-${name}`" :style="style"></i>
+	<i class="dol-icon" :class="`dol-icon-${name}`" :style="style"></i>
 </template>
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
