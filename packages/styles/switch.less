@@ -1,0 +1,56 @@
+@import "common/var";
+
+.dol-switch {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+	min-width: @switch-height * 2;
+	height: @switch-height;
+	line-height: @switch-height - 2px;
+	outline: none;
+	border: 1px solid transparent;
+	border-radius: @switch-height / 2;
+	position: relative;
+	cursor: pointer;
+	transition: all .3s;
+	font-size: 12px;
+	color: #fff;
+	background: rgba(0, 0, 0, .25);
+	&.isChecked {
+		background: @primary-color;
+		.dol-switch__action {
+			left: calc(100% - @switch-ball-height - 2px);
+		}
+		.dol-switch__inner {
+			margin-left: 6px;
+			margin-right: 24px;
+		}
+	}
+	&.disabled, &.loading {
+		opacity: .4;
+		cursor: not-allowed;
+	}
+	&__action {
+		content: "";
+		display: inline-block;
+		position: absolute;
+		left: 1px;
+		top: 1px;
+		height: @switch-ball-height;
+		width: @switch-ball-height;
+		background: #fff;
+		border-radius: 50%;
+		transition: all .3s;
+	}
+	.dol-icon-loading {
+		color: @primary-color;
+		animation: loading 1.5s linear infinite;;
+	}
+	&__inner {
+		display: block;
+		vertical-align: middle;
+		margin-right: 6px;
+		margin-left: 24px;
+	}
+}
