@@ -2,9 +2,9 @@
 @import "./common/mixin";
 .dol-button {
 	display: inline-block;
-	padding: 0 @button-padding-base;
-	min-height: @button-height-base;
-	line-height: @button-height-base;
+	padding: 0 @padding-default;
+	height: @height-default;
+	line-height: 1.5;
 	border-radius: @border-radius;
 	cursor: pointer;
 	color: @white;
@@ -13,29 +13,34 @@
 	text-align: center;
 	border: 1px solid transparent;
 	transition: color .2s linear, background-color .2s linear, border .2s linear, box-shadow .2s linear;
+	font-size: 14px;
 	&.dol-button-iconOnly {
 		> .dol-icon {
 			vertical-align: middle;
 		}
 	}
 	&.dol-button-round {
-		border-radius: @button-height-base;
+		border-radius: @height-default;
 	}
 	.dol-icon + span {
 		margin-left: 4px;
 	}
 	&.dol-button-small {
-		padding: 0 @button-padding-small;
-		min-height: @button-height-small;
+		padding: 0 @padding-small;
+		height: @height-small;
+		line-height: 1.5;
+		font-size: 14px;
 		&.dol-button-round {
-			border-radius: @button-height-small;
+			border-radius: @height-small;
 		}
 	}
 	&.dol-button-large {
-		padding: 0 @button-padding-large;
-		min-height: @button-height-large;
+		padding: 0 @padding-default;
+		height: @height-large;
+		line-height: 1.5;
+		font-size: 16px;
 		&.dol-button-round {
-			border-radius: @button-height-large;
+			border-radius: @height-large;
 		}
 	}
 	&.dol-button-loading {
