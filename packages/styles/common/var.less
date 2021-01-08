@@ -1,39 +1,61 @@
 // color
-@primary-color: #2d8cf0;
-@info-color: #2db7f5;
-@warning-color: #ffad33;
-@error-color: #ed4318;
-@success-color: #19be6b;
-@white: #fff;
-@black: #000;
+@color-primary: #2d8cf0;
+@color-info: #2db7f5;
+@color-warning: #ffad33;
+@color-error: #ed4318;
+@color-success: #19be6b;
+@color-white: #fff;
+@color-black: #000;
+@color-text-normal: #606266;
+@color-text-placeholder: #bfbfbf;
+@color-text-disabled: #939599;
+@color-border-base: #dcdee2;
+@color-border-active: #2b85e4;
+@color-border-disabled: #dcdee2;
 
-// base
-@text-color: #515a6e;
-@text-color-disabled: #939599;
-@background-color-disabled: #f7f7f7;
-@font-path:'./fonts';
+//Typography
+@font-path: "./fonts";
+@font-size-extra-large: 20px;
+@font-size-large: 18px;
+@font-size-medium: 16px;
+@font-size-base: 14px;
+@font-size-small: 13px;
+@font-size-extra-small: 12px;
+@font-weight-primary: 500;
 
-// border-color
-@border-color-base: #dcdee2;
-@border-color-active: #2b85e4;
-@border-color-disabled: #dcdee2;
-@border-radius: 4px;
-@button-group-border: #2b85e4;
+// disabled color base
+@disabled-background-base: #f7f7f7;
+@disabled-color-base: @color-text-disabled;
+@disabled-border-base: @color-border-disabled;
 
+// border
+@border-radius-base: 4px;
+@border-radius-small: 2px;
+@border-radius-zero: 0;
+@border-width-base: 1px;
+@border-style-base: solid;
+@border-base: @border-width-base @border-style-base @color-border-base;
 
+// padding
 @padding-small: 7px;
-@padding-default: 15px;
+@padding-base: 15px;
+@padding-large: 30px;
 @height-small: 24px;
-@height-default: 32px;
+@height-base: 32px;
 @height-large: 40px;
 
 // switch
 @switch-height: 22px;
 @switch-ball-height: @switch-height - 4px;
 
+// input
+@input-text-color: #606266;
+@input-border-radius: @border-radius-small;
+
 //shadow
 @box-shadow: 0 0 0 2px rgba(45, 140, 240, .2);
 
+// keyframes
 @keyframes loading {
 	0% {
 		transform: rotate(0deg);

@@ -2,25 +2,25 @@
 @import "./common/mixin";
 .dol-button {
 	display: inline-block;
-	padding: 0 @padding-default;
-	height: @height-default;
+	padding: 0 @padding-base;
+	height: @height-base;
 	line-height: 1.5;
-	border-radius: @border-radius;
+	border-radius: @border-radius-base;
 	cursor: pointer;
-	color: @white;
+	color: @color-white;
 	outline: none;
 	vertical-align: middle;
 	text-align: center;
-	border: 1px solid transparent;
+	border: @border-width-base @border-style-base transparent;
 	transition: color .2s linear, background-color .2s linear, border .2s linear, box-shadow .2s linear;
-	font-size: 14px;
+	font-size: @font-size-base;
 	&.dol-button-iconOnly {
 		> .dol-icon {
 			vertical-align: middle;
 		}
 	}
 	&.dol-button-round {
-		border-radius: @height-default;
+		border-radius: @height-base;
 	}
 	.dol-icon + span {
 		margin-left: 4px;
@@ -29,16 +29,16 @@
 		padding: 0 @padding-small;
 		height: @height-small;
 		line-height: 1.5;
-		font-size: 14px;
+		font-size: @font-size-base;
 		&.dol-button-round {
 			border-radius: @height-small;
 		}
 	}
 	&.dol-button-large {
-		padding: 0 @padding-default;
+		padding: 0 @padding-base;
 		height: @height-large;
 		line-height: 1.5;
-		font-size: 16px;
+		font-size: @font-size-medium;
 		&.dol-button-round {
 			border-radius: @height-large;
 		}
@@ -58,213 +58,213 @@
 		margin-left: 10px;
 	}
 	&-default {
-		background: @white;
-		border: 1px solid @border-color-base;
-		color: @text-color;
+		background: @color-white;
+		border: @border-base;
+		color: @color-text-normal;
 		&.dol-button-loading {
-			color: @text-color-disabled;
+			color: @color-text-disabled;
 		}
 		&.dol-button-disabled {
 			.overlay-mixin();
-			.disabled-mixin(@text-color-disabled, @white, @border-color-disabled);
+			.disabled-mixin(@color-text-disabled, @color-white, @color-border-disabled);
 		}
 		&:hover {
-			border-color: @border-color-active;
-			color: @primary-color;
+			border-color: @color-border-active;
+			color: @color-primary;
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@text-color-disabled, @white, @border-color-disabled);
+				.disabled-mixin(@color-text-disabled, @color-white, @color-border-disabled);
 			}
 		}
 		&:active {
-			border-color: darken(@border-color-active, 5%);
-			color: darken(@border-color-active, 5%);
+			border-color: darken(@color-border-active, 5%);
+			color: darken(@color-border-active, 5%);
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@text-color-disabled, @white, @border-color-disabled);
+				.disabled-mixin(@color-text-disabled, @color-white, @color-border-disabled);
 			}
 		}
 		&:focus {
 			box-shadow: @box-shadow;
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@text-color-disabled, @white, @border-color-disabled);
+				.disabled-mixin(@color-text-disabled, @color-white, @color-border-disabled);
 			}
 		}
 	}
 	&-primary {
 		&.dol-button-disabled {
 			.overlay-mixin();
-			.disabled-mixin(@white, @primary-color, @primary-color);
+			.disabled-mixin(@color-white, @color-primary, @color-primary);
 		}
-		background: @primary-color;
+		background: @color-primary;
 		&:hover {
-			background: lighten(@primary-color, 10%);
+			background: lighten(@color-primary, 10%);
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@white, @primary-color, @primary-color);
+				.disabled-mixin(@color-white, @color-primary, @color-primary);
 			}
 		}
 		&:active {
-			background: darken(@primary-color, 5%);
-			border-color: darken(@primary-color, 5%);
+			background: darken(@color-primary, 5%);
+			border-color: darken(@color-primary, 5%);
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@white, @primary-color, @primary-color);
+				.disabled-mixin(@color-white, @color-primary, @color-primary);
 			}
 		}
 		&:focus {
 			box-shadow: @box-shadow;
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@white, @primary-color, @primary-color);
+				.disabled-mixin(@color-white, @color-primary, @color-primary);
 			}
 		}
 	}
 	&-info {
-		background: @info-color;
+		background: @color-info;
 		&.dol-button-disabled {
 			.overlay-mixin();
-			.disabled-mixin(@white, @info-color, @info-color);
+			.disabled-mixin(@color-white, @color-info, @color-info);
 		}
 		&:hover {
-			background: lighten(@info-color, 10%);
+			background: lighten(@color-info, 10%);
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@white, @info-color, @info-color);
+				.disabled-mixin(@color-white, @color-info, @color-info);
 			}
 		}
 		&:active {
-			background: darken(@info-color, 5%);
-			border-color: darken(@info-color, 5%);
+			background: darken(@color-info, 5%);
+			border-color: darken(@color-info, 5%);
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@white, @info-color, @info-color);
+				.disabled-mixin(@color-white, @color-info, @color-info);
 			}
 		}
 		&:focus {
 			box-shadow: @box-shadow;
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@white, @info-color, @info-color);
+				.disabled-mixin(@color-white, @color-info, @color-info);
 			}
 		}
 	}
 	&-warning {
-		background: @warning-color;
+		background: @color-warning;
 		&.dol-button-disabled {
 			.overlay-mixin();
-			.disabled-mixin(@white, @warning-color, @warning-color);
+			.disabled-mixin(@color-white, @color-warning, @color-warning);
 		}
 		&:hover {
-			background: lighten(@warning-color, 10%);
+			background: lighten(@color-warning, 10%);
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@white, @warning-color, @warning-color);
+				.disabled-mixin(@color-white, @color-warning, @color-warning);
 			}
 		}
 		&:active {
-			background: darken(@warning-color, 5%);
-			border-color: darken(@warning-color, 5%);
+			background: darken(@color-warning, 5%);
+			border-color: darken(@color-warning, 5%);
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@white, @warning-color, @warning-color);
+				.disabled-mixin(@color-white, @color-warning, @color-warning);
 			}
 		}
 		&:focus {
 			box-shadow: @box-shadow;
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@white, @warning-color, @warning-color);
+				.disabled-mixin(@color-white, @color-warning, @color-warning);
 			}
 		}
 	}
 	&-success {
-		background: @success-color;
+		background: @color-success;
 		&.dol-button-disabled {
 			.overlay-mixin();
-			.disabled-mixin(@white, @success-color, @success-color);
+			.disabled-mixin(@color-white, @color-success, @color-success);
 		}
 		&:hover {
-			background: lighten(@success-color, 10%);
+			background: lighten(@color-success, 10%);
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@white, @success-color, @success-color);
+				.disabled-mixin(@color-white, @color-success, @color-success);
 			}
 		}
 		&:active {
-			background: darken(@success-color, 5%);
-			border-color: darken(@success-color, 5%);
+			background: darken(@color-success, 5%);
+			border-color: darken(@color-success, 5%);
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@white, @success-color, @success-color);
+				.disabled-mixin(@color-white, @color-success, @color-success);
 			}
 		}
 		&:focus {
 			box-shadow: @box-shadow;
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@white, @success-color, @success-color);
+				.disabled-mixin(@color-white, @color-success, @color-success);
 			}
 		}
 	}
 	&-error {
-		background: @error-color;
+		background: @color-error;
 		&.dol-button-disabled {
 			.overlay-mixin();
-			.disabled-mixin(@white, @error-color, @error-color);
+			.disabled-mixin(@color-white, @color-error, @color-error);
 		}
 		&:hover {
-			background: lighten(@error-color, 10%);
+			background: lighten(@color-error, 10%);
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@white, @error-color, @error-color);
+				.disabled-mixin(@color-white, @color-error, @color-error);
 			}
 		}
 		&:active {
-			background: darken(@error-color, 5%);
-			border-color: darken(@error-color, 5%);
+			background: darken(@color-error, 5%);
+			border-color: darken(@color-error, 5%);
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@white, @error-color, @error-color);
+				.disabled-mixin(@color-white, @color-error, @color-error);
 			}
 		}
 		&:focus {
 			box-shadow: @box-shadow;
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@white, @error-color, @error-color);
+				.disabled-mixin(@color-white, @color-error, @color-error);
 			}
 		}
 	}
 	&-text {
 		background-color: transparent;
-		color: @text-color;
+		color: @color-text-normal;
 		&.dol-button-loading {
-			color: @text-color-disabled;
+			color: @color-text-disabled;
 		}
 		&.dol-button-disabled {
 			.overlay-mixin();
-			.disabled-mixin(@text-color-disabled, transparent, transparent);
+			.disabled-mixin(@color-text-disabled, transparent, transparent);
 		}
 		&:hover {
-			color: @primary-color;
+			color: @color-primary;
 			&.dol-button-disabled:not(.dol-button-loading) {
 				.overlay-mixin();
-				.disabled-mixin(@text-color-disabled, transparent, transparent);
+				.disabled-mixin(@color-text-disabled, transparent, transparent);
 			}
 		}
 		&:active {
-			color: darken(@border-color-active, 10%);
+			color: darken(@color-border-active, 10%);
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@text-color-disabled, transparent, transparent);
+				.disabled-mixin(@color-text-disabled, transparent, transparent);
 			}
 		}
 		&:focus {
 			&.dol-button-disabled {
 				.overlay-mixin();
-				.disabled-mixin(@text-color-disabled, transparent, transparent);
+				.disabled-mixin(@color-text-disabled, transparent, transparent);
 			}
 		}
 	}
@@ -272,23 +272,23 @@
 
 .dol-button-group {
 	.dol-button {
-		border-radius: 0;
+		border-radius: @border-radius-zero;
 		&:first-child {
-			border-top-left-radius: @border-radius;
-			border-bottom-left-radius: @border-radius;
+			border-top-left-radius: @border-radius-base;
+			border-bottom-left-radius: @border-radius-base;
 		}
 		&:last-child {
-			border-top-right-radius: @border-radius;
-			border-bottom-right-radius: @border-radius;
+			border-top-right-radius: @border-radius-base;
+			border-bottom-right-radius: @border-radius-base;
 		}
 		&.dol-button-default:not(:first-child) {
 			border-left-color: transparent;
 			&:hover {
-				border-left-color: @button-group-border;
+				border-left-color: @color-border-active;
 			}
 		}
 		&.dol-button-primary:not(:last-child) {
-			border-right-color: @button-group-border;
+			border-right-color: @color-border-active;
 		}
 	}
 	.dol-button + .dol-button {
