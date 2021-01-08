@@ -68,18 +68,5 @@ describe('Switch', () => {
 		await wrapper.find('.dol-switch').trigger('click')
 		expect(wrapper.vm.value).toBe(true)
 	})
-	test('disabled', async() => {
-		const wrapper = mount({
-			components: { 'dol-switch': Switch },
-			template: `
-				<dol-switch v-model="value" disabled></dol-switch>
-			`,
-			data () {
-				return { value: true }
-			},
-		})
-		expect(wrapper.vm.value).toBe(true)
-		await wrapper.find('.dol-switch').trigger('click')
-		expect(wrapper.vm.value).toBe(true)
-	})
+	
 })
