@@ -5,9 +5,10 @@ import DolButtonGroup from './button-group'
 import Tabs from './tabs'
 import TabPane from './tab-pane'
 import Switch from './switch'
+import Input from './input'
 
 const components = [
-	DolButton, DolIcon, DolButtonGroup, Tabs, TabPane,Switch
+	DolButton, DolIcon, DolButtonGroup, Tabs, TabPane,Switch,Input,
 ]
 const install = (app: App) => {
 	components.forEach(component => {
@@ -23,5 +24,6 @@ export {
 	DolButtonGroup,
 	Tabs,
 	TabPane,
-	Switch
+	Switch,
+	Input
 }

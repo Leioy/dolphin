@@ -3,12 +3,14 @@ import Icon from 'examples/components/icon.vue'
 import Button from 'examples/components/button.vue'
 import Tabs from 'examples/components/tabs.vue'
 import Switch from 'examples/components/switch.vue'
+import Input from 'examples/components/input.vue'
 
 const routes: RouteRecordRaw[] = [
 	{ path: '/icon', component: Icon },
 	{ path: '/button', component: Button },
 	{ path: '/tabs', component: Tabs },
 	{ path: '/switch', component: Switch },
+	{ path: '/input', component: Input },
 ]
 const router = createRouter({
 	history: createWebHashHistory(),

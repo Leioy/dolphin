@@ -1,0 +1,95 @@
+@import "./common/var";
+
+.dol-input {
+	width: 100%;
+	display: inline-block;
+	border: none;
+	&__inner {
+		height: @height-base;
+		line-height: 1.5;
+		outline: none;
+		border: @border-base;
+		font-size: @font-size-base;
+		padding: 0 @padding-base;
+		transition: all .2s linear;
+		border-radius: @input-border-radius;
+		color: @input-text-color;
+		background-color: @color-white;
+		&:hover {
+			border-color: @color-border-active;
+		}
+		&:focus {
+			border-color: @color-border-active;
+			outline: none;
+			box-shadow: @box-shadow;
+		}
+		&::placeholder {
+			color: @color-text-placeholder;
+		}
+	}
+	&--small {
+		.dol-input__inner {
+			padding: 0 @padding-small;
+			height: @height-small;
+		}
+	}
+	&--large {
+		.dol-input__inner {
+			padding: 0 @padding-base;
+			height: @height-large;
+			font-size: @font-size-medium;
+		}
+	}
+	&.is-disabled {
+		.dol-input__inner {
+			background-color: @disabled-background-base;
+			border-color: @disabled-border-base;
+			color: @disabled-color-base;
+			cursor: not-allowed;
+			&::placeholder {
+				color: @disabled-color-base;
+			}
+		}
+	}
+	&--prepend,&--append {
+		display: inline-flex;
+		border-radius: @border-radius-zero;
+		.dol-button {
+			margin: -2px -@padding-base;
+			border-color: transparent;
+			background-color: transparent;
+			border-top: 0;
+			border-bottom: 0;
+			color: inherit;
+		}
+	}
+	&--prepend {
+		.dol-input__inner {
+			border-top-left-radius: @border-radius-zero;
+			border-bottom-left-radius: @border-radius-zero;
+		}
+	}
+	&--append {
+		.dol-input__inner {
+			border-top-right-radius: @border-radius-zero;
+			border-bottom-right-radius: @border-radius-zero;
+		}
+	}
+	&__prepend,&__append {
+		display: inline-flex;
+		align-items: center;
+		padding: 0 @padding-base;
+		border: @border-base;
+		background: @background-color-base;
+	}
+	&__prepend {
+		border-right: 0;
+		border-top-left-radius: @input-border-radius;
+		border-bottom-left-radius: @input-border-radius;
+	}
+	&__append {
+		border-left: 0;
+		border-top-right-radius: @input-border-radius;
+		border-bottom-right-radius: @input-border-radius;
+	}
+}
