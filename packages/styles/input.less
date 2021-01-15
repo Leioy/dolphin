@@ -4,7 +4,31 @@
 	width: 100%;
 	display: inline-block;
 	border: none;
+	position: relative;
 	&__inner {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&.dol-input--preSuffix {
+			padding: 0 @padding-base;
+			border: @border-base;
+			border-radius: @input-border-radius;
+			transition: all .2s linear;
+			&:hover {
+				border-color: @color-border-active;
+			}
+			&.dol-input--focused {
+				border-color: @color-border-active;
+				box-shadow: @box-shadow;
+			}
+			.dol-input__action {
+				border: none;
+				box-shadow: none;
+			}
+		}
+	}
+	&__action {
+		width: 100%;
 		height: @height-base;
 		line-height: 1.5;
 		outline: none;
@@ -28,20 +52,20 @@
 		}
 	}
 	&--small {
-		.dol-input__inner {
+		.dol-input__action {
 			padding: 0 @padding-small;
 			height: @height-small;
 		}
 	}
 	&--large {
-		.dol-input__inner {
+		.dol-input__action {
 			padding: 0 @padding-base;
 			height: @height-large;
 			font-size: @font-size-medium;
 		}
 	}
 	&.is-disabled {
-		.dol-input__inner {
+		.dol-input__action {
 			background-color: @disabled-background-base;
 			border-color: @disabled-border-base;
 			color: @disabled-color-base;
@@ -51,7 +75,7 @@
 			}
 		}
 	}
-	&--prepend,&--append {
+	&--prepend, &--append {
 		display: inline-flex;
 		border-radius: @border-radius-zero;
 		.dol-button {
@@ -61,21 +85,24 @@
 			border-top: 0;
 			border-bottom: 0;
 			color: inherit;
+			&:focus {
+				box-shadow: none;
+			}
 		}
 	}
 	&--prepend {
-		.dol-input__inner {
+		.dol-input__action {
 			border-top-left-radius: @border-radius-zero;
 			border-bottom-left-radius: @border-radius-zero;
 		}
 	}
 	&--append {
-		.dol-input__inner {
+		.dol-input__action {
 			border-top-right-radius: @border-radius-zero;
 			border-bottom-right-radius: @border-radius-zero;
 		}
 	}
-	&__prepend,&__append {
+	&__prepend, &__append {
 		display: inline-flex;
 		align-items: center;
 		padding: 0 @padding-base;
@@ -91,5 +118,20 @@
 		border-left: 0;
 		border-top-right-radius: @input-border-radius;
 		border-bottom-right-radius: @input-border-radius;
+	}
+	&__prefix, &__suffix {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&__suffix {
+		.dol-icon-circle-close {
+			cursor: pointer;
+			color: @input-icon-color;
+			transition: color .2s linear;
+			&:hover {
+				color: @input-text-color;
+			}
+		}
 	}
 }

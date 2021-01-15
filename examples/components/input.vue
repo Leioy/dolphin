@@ -1,8 +1,10 @@
 <template>
 	<div class="container">
-		<dol-input :maxlength="8" v-model="value" @focus="focus" @input="input" placeholder="请输入...."></dol-input>
-		<dol-input disabled v-model="value" size="small" placeholder="请输入...."></dol-input>
-		<dol-input class="ddd" size="large" placeholder="请输入...."></dol-input>
+		<div>{{ text }}</div>
+		<dol-input class="ddd" :maxlength="8" v-model="text" placeholder="请输入...."></dol-input>
+		<dol-input disabled v-model="text" size="small" placeholder="请输入...."></dol-input>
+		<dol-input class="ddd" :model-value="text" @input="input" ref="inputRef" size="large"
+		           placeholder="请输入...."></dol-input>
 		<dol-input readonly :placeholder="p"></dol-input>
 		<dol-input>
 			<template #prepend>http://</template>
@@ -10,10 +12,18 @@
 		</dol-input>
 		<dol-input>
 			<template #prepend>
-				<dol-button>click</dol-button>
+				<dol-button type="primary">click</dol-button>
 			</template>
 			<template #append>
 				<dol-button icon="search"></dol-button>
+			</template>
+		</dol-input>
+		<dol-input prefix="¥" suffix="RMB">
+			<template #prefix>
+				<dol-icon name="search"></dol-icon>
+			</template>
+			<template #suffix>
+				<dol-icon name="search"></dol-icon>
 			</template>
 		</dol-input>
 	</div>
@@ -23,13 +33,14 @@ import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
 	setup () {
+		const text = ref('222')
 		const input = (e: unknown) => {
-			console.log('out', e)
+			// console.log('out', e)
 		}
 		const focus = (e: FocusEvent) => {
-			console.log(e.target)
+			// console.log(e.target)
 		}
-		return { input, focus, value: ref('222'), p: ref('请输入123sss') }
+		return { input, focus, text, p: ref('请输入123sss') }
 	},
 })
 </script>
