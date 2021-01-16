@@ -5,10 +5,12 @@
 	display: inline-block;
 	border: none;
 	position: relative;
+	font-size: @font-size-base;
 	&__inner {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		background-color: @color-white;
 		border: @border-base;
 		border-radius: @input-border-radius;
 		position: relative;
@@ -44,18 +46,19 @@
 		padding: 0 @padding-small;
 		transition: all .2s linear;
 		color: @input-text-color;
-		background-color: @color-white;
 		&::placeholder {
 			color: @color-text-placeholder;
 		}
 	}
 	&--small {
-		.dol-input__action {
+		font-size: @font-size-small;
+			.dol-input__action {
 			padding: 0 @padding-small;
 			height: @height-small;
 		}
 	}
 	&--large {
+		font-size: @font-size-large;
 		.dol-input__action {
 			padding: 0 @padding-base;
 			height: @height-large;
@@ -63,9 +66,11 @@
 		}
 	}
 	&.is-disabled {
-		.dol-input__action {
-			background-color: @disabled-background-base;
+		.dol-input__inner {
 			border-color: @disabled-border-base;
+			background-color: @disabled-background-base;
+		}
+		.dol-input__action {
 			color: @disabled-color-base;
 			cursor: not-allowed;
 			&::placeholder {
@@ -105,6 +110,7 @@
 		align-items: center;
 		padding: 0 @padding-base;
 		border: @border-base;
+		color: @color-text-normal;
 		background: @background-color-base;
 	}
 	&__prepend {
@@ -121,6 +127,7 @@
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
+		color: @input-text-color;
 	}
 	&__prefix {
 		margin-left: @padding-small;

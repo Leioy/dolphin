@@ -19,7 +19,7 @@
 			<input
 				ref="inputRef"
 				class="dol-input__action" v-bind="inputAttrs"
-				:disabled="disabled" :value="modelValue" :readonly="readonly"
+				:disabled="disabled" :readonly="readonly"
 				@input="onInput" @change="onChange" @compositionstart="onCompositionStart"
 				@compositionend="onCompositionEnd" @focus="onFocus" @blur="onBlur"
 			>
@@ -43,16 +43,12 @@
 	</div>
 </template>
 <script lang="ts">
-import { computed, defineComponent, PropType, ref, shallowRef, toRefs } from 'vue'
+import { computed, defineComponent, PropType, ref, shallowRef, toRefs, onMounted, nextTick, watch } from 'vue'
 
 export default defineComponent({
 	name: 'DolInput',
 	inheritAttrs: false,
 	props: {
-		defaultValue: {
-			type: String,
-			default: '',
-		},
 		modelValue: {
 			type: String,
 			default: '',
@@ -104,9 +100,8 @@ export default defineComponent({
 			return modelValue.value && !disabled.value && !readonly.value
 		})
 		const localInputValue = computed(() => {
-			return ((props.modelValue === null || props.modelValue === undefined) ? '' : String(props.modelValue)) || props.defaultValue || ''
+			return (props.modelValue === null || props.modelValue === undefined) ? '' : String(props.modelValue)
 		})
-		console.log('local',localInputValue.value)
 		const getInputAttrs = () => {
 			inputAttrs.value = Object.entries(attrs).reduce((acm: { [key: string]: unknown }, [ key, val ]) => {
 				if (![ 'class', 'style' ].includes(key)) {
@@ -125,10 +120,16 @@ export default defineComponent({
 				onInput(e)
 			}
 		}
+		const setLocalInputValue = () => {
+			inputRef.value.value = localInputValue.value
+		}
 		const onInput = (e: InputEvent | CompositionEvent) => {
 			if (isComposing.value) return
 			emit('input', e)
 			emit('update:modelValue', (e.target as HTMLInputElement).value)
+			nextTick(() => {
+				setLocalInputValue()
+			})
 		}
 		const onChange = (e: Event) => {
 			emit('change', e)
@@ -145,6 +146,12 @@ export default defineComponent({
 			emit('update:modelValue', '')
 			emit('clear')
 		}
+		watch(localInputValue, () => {
+			setLocalInputValue()
+		})
+		onMounted(() => {
+			setLocalInputValue()
+		})
 		return {
 			inputRef,
 			inputAttrs,
