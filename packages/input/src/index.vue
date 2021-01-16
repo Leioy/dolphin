@@ -7,7 +7,7 @@
 		</template>
 		<div class="dol-input__inner"
 		     :class="{
-					'dol-input--preSuffix': prefix || suffix || $slots.prefix || $slots.suffix,
+					'dol-input--preSuffix': prefix || suffix || $slots.prefix || $slots.suffix || clearable,
 					'dol-input--focused': isFocused
 			}">
 			<span v-if="prefix || $slots.prefix" class="dol-input__prefix">
@@ -17,14 +17,18 @@
 				</template>
 			</span>
 			<input
+				ref="inputRef"
 				class="dol-input__action" v-bind="inputAttrs"
 				:disabled="disabled" :value="modelValue" :readonly="readonly"
 				@input="onInput" @change="onChange" @compositionstart="onCompositionStart"
 				@compositionend="onCompositionEnd" @focus="onFocus" @blur="onBlur"
-				@mouseenter="onMouseEnter" @mouseleave="onMouseLeave"
 			>
-			<span v-if="suffix || $slots.suffix" class="dol-input__suffix">
-				<i v-if="isClearable" class="dol-icon dol-icon-circle-close"></i>
+			<span v-if="suffix || $slots.suffix || isClearable" class="dol-input__suffix">
+				<i v-show="isClearable" class="dol-icon dol-icon-circle-close"
+				   @mousedown.prevent
+				   @click="clear"
+				>
+				</i>
 				<template v-if="suffix">{{ suffix }}</template>
 				<template v-else-if="$slots.suffix">
 					<slot name="suffix"></slot>
@@ -39,17 +43,25 @@
 	</div>
 </template>
 <script lang="ts">
-import { computed, defineComponent, PropType, ref, toRefs, shallowRef } from 'vue'
+import { computed, defineComponent, PropType, ref, shallowRef, toRefs } from 'vue'
 
 export default defineComponent({
 	name: 'DolInput',
 	inheritAttrs: false,
 	props: {
+		defaultValue: {
+			type: String,
+			default: '',
+		},
 		modelValue: {
 			type: String,
 			default: '',
 		},
 		disabled: {
+			type: Boolean,
+			default: false,
+		},
+		clearable: {
 			type: Boolean,
 			default: false,
 		},
@@ -70,15 +82,13 @@ export default defineComponent({
 			default: '',
 		},
 	},
-	emits: [ 'input', 'update:modelValue', 'change', 'blur', 'focus' ],
+	emits: [ 'input', 'update:modelValue', 'change', 'blur', 'focus', 'clear' ],
 	setup (props, { attrs, slots, emit }) {
 		const inputAttrs = shallowRef({})
-
-		const { size, disabled, modelValue } = toRefs(props)
+		const inputRef = ref(null)
+		const { size, disabled, modelValue, readonly } = toRefs(props)
 		const isComposing = ref(false)
 		const isFocused = ref(false)
-		const isHovering = ref(false)
-		// const isClearable = ref(true)
 		const classObj = computed(() => {
 			return [
 				{
@@ -91,8 +101,12 @@ export default defineComponent({
 			]
 		})
 		const isClearable = computed(() => {
-			return !!modelValue.value && (isFocused.value || isHovering.value)
+			return modelValue.value && !disabled.value && !readonly.value
 		})
+		const localInputValue = computed(() => {
+			return ((props.modelValue === null || props.modelValue === undefined) ? '' : String(props.modelValue)) || props.defaultValue || ''
+		})
+		console.log('local',localInputValue.value)
 		const getInputAttrs = () => {
 			inputAttrs.value = Object.entries(attrs).reduce((acm: { [key: string]: unknown }, [ key, val ]) => {
 				if (![ 'class', 'style' ].includes(key)) {
@@ -102,12 +116,6 @@ export default defineComponent({
 			}, {})
 		}
 		getInputAttrs()
-		const onMouseEnter = () => {
-			isHovering.value = true
-		}
-		const onMouseLeave = () => {
-			isHovering.value = false
-		}
 		const onCompositionStart = () => {
 			isComposing.value = true
 		}
@@ -133,7 +141,12 @@ export default defineComponent({
 			isFocused.value = false
 			emit('blur', e)
 		}
+		const clear = () => {
+			emit('update:modelValue', '')
+			emit('clear')
+		}
 		return {
+			inputRef,
 			inputAttrs,
 			isClearable,
 			isFocused,
@@ -144,8 +157,7 @@ export default defineComponent({
 			onCompositionEnd,
 			onFocus,
 			onBlur,
-			onMouseEnter,
-			onMouseLeave,
+			clear,
 		}
 	},
 })
