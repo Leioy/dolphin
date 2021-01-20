@@ -16,9 +16,9 @@ describe('Button', () => {
 	})
 	test('icon', () => {
 		const wrapper = mount(Button, {
-			props: { icon: 'success' },
+			props: { icon: 'ios-checkmark-circle' },
 		})
-		expect(wrapper.find('.dol-icon-success').exists()).toBe(true)
+		expect(wrapper.find('.dol-icon-ios-checkmark-circle').exists()).toBe(true)
 		expect(wrapper.classes()).toContain('dol-button-iconOnly')
 	})
 	test('loading', async () => {
@@ -27,7 +27,7 @@ describe('Button', () => {
 			slots: { default: slotsText },
 		})
 		expect(wrapper.classes()).toContain('dol-button-loading')
-		expect(wrapper.find('.dol-icon-loading').exists()).toBe(true)
+		expect(wrapper.find('.dol-icon-ios-loading').exists()).toBe(true)
 		await wrapper.trigger('click')
 		expect(wrapper.emitted('click')).toBeFalsy()
 	})

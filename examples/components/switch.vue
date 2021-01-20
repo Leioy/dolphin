@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<dol-switch active-text="开" inactive-text="关" v-model="value"></dol-switch>
-		<dol-switch v-model="value2" active-icon="check" inactive-icon="close"></dol-switch>
+		<dol-switch v-model="value2" active-icon="md-checkmark" inactive-icon="md-close"></dol-switch>
 		<dol-switch active-text="开" disabled inactive-text="关" v-model="value3"></dol-switch>
 		<dol-switch active-text="开" :loading="loading" inactive-text="关" v-model="value4" @change="change"></dol-switch>
 	</div>

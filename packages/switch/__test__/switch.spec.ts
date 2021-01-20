@@ -41,16 +41,16 @@ describe('Switch', () => {
 		const wrapper = mount({
 			components: { 'dol-switch': Switch },
 			template: `
-				<dol-switch v-model="value" active-icon="check" inactive-icon="close"></dol-switch>
+				<dol-switch v-model="value" active-icon="md-checkmark" inactive-icon="md-close"></dol-switch>
 			`,
 			data () {
 				return { value: false }
 			},
 		})
-		expect(wrapper.find('.dol-icon-close').exists()).toBe(true)
+		expect(wrapper.find('.dol-icon-md-close').exists()).toBe(true)
 		expect(wrapper.vm.value).toBe(false)
 		await wrapper.find('.dol-switch').trigger('click')
-		expect(wrapper.find('.dol-icon-check').exists()).toBe(true)
+		expect(wrapper.find('.dol-icon-md-checkmark').exists()).toBe(true)
 		expect(wrapper.vm.value).toBe(true)
 	})
 	test('loading', async () => {
@@ -63,7 +63,7 @@ describe('Switch', () => {
 				return { value: true }
 			},
 		})
-		expect(wrapper.find('.dol-icon-loading').exists()).toBe(true)
+		expect(wrapper.find('.dol-icon-ios-loading').exists()).toBe(true)
 		expect(wrapper.vm.value).toBe(true)
 		await wrapper.find('.dol-switch').trigger('click')
 		expect(wrapper.vm.value).toBe(true)

@@ -1,6 +1,6 @@
 <template>
 	<button :class="classes" :disabled="disabled || loading" @click="handleClick">
-		<i v-if="loading" class="dol-icon dol-icon-loading"></i>
+		<i v-if="loading" class="dol-icon dol-icon-ios-loading"></i>
 		<i v-if="icon && !loading" class="dol-icon" :class="`dol-icon-${icon}`"></i>
 		<span v-if="$slots.default"><slot></slot></span>
 	</button>

@@ -5,7 +5,7 @@
 			{{ innerText }}
 		</span>
 		<span class="dol-switch__action">
-			<i v-if="loading" class="dol-icon dol-icon-loading"></i>
+			<i v-if="loading" class="dol-icon dol-icon-ios-loading"></i>
 		</span>
 	</button>
 </template>

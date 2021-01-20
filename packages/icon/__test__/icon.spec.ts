@@ -5,15 +5,15 @@ describe('icon.vue', () => {
 	test('render',() =>{
 		const wrapper = mount(Icon,{
 			props:{
-				name:'success'
+				name:'ios-checkmark-circle'
 			},
 		})
-		expect(wrapper.classes()).toContain('dol-icon-success')
+		expect(wrapper.classes()).toContain('dol-icon-ios-checkmark-circle')
 	})
 	test('accept props color', () => {
 		const wrapper = mount(Icon, {
 			props: {
-				name: 'success',
+				name: 'ios-checkmark-circle',
 				color: 'red',
 			},
 		})
@@ -22,7 +22,7 @@ describe('icon.vue', () => {
 	test('accept props size', () => {
 		const wrapper = mount(Icon, {
 			props: {
-				name: 'success',
+				name: 'ios-checkmark-circle',
 				size: '18',
 			},
 		})
