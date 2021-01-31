@@ -1,14 +1,15 @@
 import { App } from 'vue'
-import DolButton from './button'
-import DolIcon from './icon'
-import DolButtonGroup from './button-group'
+import Button from './button'
+import Icon from './icon'
+import ButtonGroup from './button-group'
 import Tabs from './tabs'
 import TabPane from './tab-pane'
 import Switch from './switch'
 import Input from './input'
+import Textarea from './text-area'
 
 const components = [
-	DolButton, DolIcon, DolButtonGroup, Tabs, TabPane,Switch,Input,
+	Button, Icon, ButtonGroup, Tabs, TabPane,Switch,Input,Textarea
 ]
 const install = (app: App) => {
 	components.forEach(component => {
@@ -19,11 +20,12 @@ export default {
 	install,
 }
 export {
-	DolButton,
-	DolIcon,
-	DolButtonGroup,
+	Button,
+	Icon,
+	ButtonGroup,
 	Tabs,
 	TabPane,
 	Switch,
-	Input
+	Input,
+	Textarea
 }

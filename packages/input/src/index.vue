@@ -17,18 +17,24 @@
 				</template>
 			</span>
 			<input
-				ref="inputRef"
-				class="dol-input__action" v-bind="inputAttrs"
+				ref="inputOrTextarea" :type="showPassword ? (isPasswordVisible ? 'text' : 'password') : type"
+				class="dol-input__action" v-bind="attrsRef"
 				:disabled="disabled" :readonly="readonly"
 				@input="onInput" @change="onChange" @compositionstart="onCompositionStart"
 				@compositionend="onCompositionEnd" @focus="onFocus" @blur="onBlur"
 			>
-			<span v-if="suffix || $slots.suffix || isClearable" class="dol-input__suffix">
-				<i v-show="isClearable" class="dol-icon dol-icon-circle-close"
+			<span v-if="suffix || $slots.suffix || isClearable || showPassword || isLimitVisible" class="dol-input__suffix">
+				<i v-if="isClearable" class="dol-icon dol-icon-ios-close-circle dol-input__clear"
 				   @mousedown.prevent
 				   @click="clear"
 				>
 				</i>
+				<i
+					v-if="showPassword"
+					class="dol-icon dol-input__view"
+					:class="[isPasswordVisible ? 'dol-icon-md-eye' : 'dol-icon-md-eye-off']"
+					@click="isPasswordVisible = !isPasswordVisible"></i>
+				<span v-if="isLimitVisible" class="dol-input__count">{{ textLength }}/{{ textLimit }}</span>
 				<template v-if="suffix">{{ suffix }}</template>
 				<template v-else-if="$slots.suffix">
 					<slot name="suffix"></slot>
@@ -43,14 +49,19 @@
 	</div>
 </template>
 <script lang="ts">
-import { computed, defineComponent, PropType, ref, shallowRef, toRefs, onMounted, nextTick, watch } from 'vue'
+import { computed, defineComponent, PropType, ref, toRefs } from 'vue'
+import { useInput } from 'packages/hooks/useInput'
 
 export default defineComponent({
 	name: 'DolInput',
 	inheritAttrs: false,
 	props: {
-		modelValue: {
+		type: {
 			type: String,
+			default: 'text',
+		},
+		modelValue: {
+			type: [ String, Number ],
 			default: '',
 		},
 		disabled: {
@@ -77,14 +88,19 @@ export default defineComponent({
 			type: String,
 			default: '',
 		},
+		showPassword: {
+			type: Boolean,
+			default: false,
+		},
+		showWordLimit: {
+			type: Boolean,
+			default: false,
+		},
 	},
 	emits: [ 'input', 'update:modelValue', 'change', 'blur', 'focus', 'clear' ],
 	setup (props, { attrs, slots, emit }) {
-		const inputAttrs = shallowRef({})
-		const inputRef = ref(null)
-		const { size, disabled, modelValue, readonly } = toRefs(props)
-		const isComposing = ref(false)
-		const isFocused = ref(false)
+		const { size, disabled, modelValue, readonly, clearable, showWordLimit, showPassword } = toRefs(props)
+		const isPasswordVisible = ref(false)
 		const classObj = computed(() => {
 			return [
 				{
@@ -97,67 +113,44 @@ export default defineComponent({
 			]
 		})
 		const isClearable = computed(() => {
-			return modelValue.value && !disabled.value && !readonly.value
+			return clearable.value && modelValue.value && !disabled.value && !readonly.value
 		})
-		const localInputValue = computed(() => {
-			return (props.modelValue === null || props.modelValue === undefined) ? '' : String(props.modelValue)
+		const isLimitVisible = computed(() => {
+			return showWordLimit.value &&
+				attrs.maxlength &&
+				!disabled.value &&
+				!readonly.value &&
+				!showPassword.value
 		})
-		const getInputAttrs = () => {
-			inputAttrs.value = Object.entries(attrs).reduce((acm: { [key: string]: unknown }, [ key, val ]) => {
-				if (![ 'class', 'style' ].includes(key)) {
-					acm[key] = val
-				}
-				return acm
-			}, {})
-		}
-		getInputAttrs()
-		const onCompositionStart = () => {
-			isComposing.value = true
-		}
-		const onCompositionEnd = (e: CompositionEvent) => {
-			if (isComposing.value) {
-				isComposing.value = false
-				onInput(e)
-			}
-		}
-		const setLocalInputValue = () => {
-			inputRef.value.value = localInputValue.value
-		}
-		const onInput = (e: InputEvent | CompositionEvent) => {
-			if (isComposing.value) return
-			emit('input', e)
-			emit('update:modelValue', (e.target as HTMLInputElement).value)
-			nextTick(() => {
-				setLocalInputValue()
-			})
-		}
-		const onChange = (e: Event) => {
-			emit('change', e)
-		}
-		const onFocus = (e: FocusEvent) => {
-			isFocused.value = true
-			emit('focus', e)
-		}
-		const onBlur = (e: FocusEvent) => {
-			isFocused.value = false
-			emit('blur', e)
-		}
+		const textLimit = computed(() => attrs.maxlength)
+		const textLength = computed(() => {
+			return typeof modelValue.value === 'number' ? String(modelValue.value).length : (modelValue.value || '').length
+		})
 		const clear = () => {
 			emit('update:modelValue', '')
 			emit('clear')
 		}
-		watch(localInputValue, () => {
-			setLocalInputValue()
-		})
-		onMounted(() => {
-			setLocalInputValue()
-		})
+		const {
+			attrsRef,
+			inputOrTextarea,
+			isFocused,
+			onInput,
+			onChange,
+			onBlur,
+			onFocus,
+			onCompositionStart,
+			onCompositionEnd,
+		} = useInput(modelValue)
 		return {
-			inputRef,
-			inputAttrs,
+			attrsRef,
+			inputOrTextarea,
 			isClearable,
 			isFocused,
+			isPasswordVisible,
+			isLimitVisible,
 			classObj,
+			textLimit,
+			textLength,
 			onInput,
 			onChange,
 			onCompositionStart,

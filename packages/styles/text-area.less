@@ -1,0 +1,70 @@
+@import "common/var";
+
+.dol-textarea {
+	width: 100%;
+	display: inline-block;
+	border: none;
+	position: relative;
+	font-size: @font-size-base;
+	color: @input-text-color;
+	&.is-disabled {
+		.dol-textarea__inner {
+			border-color: @disabled-border-base;
+			background-color: @disabled-background-base;
+		}
+		.dol-textarea__action {
+			color: @disabled-color-base;
+			cursor: not-allowed;
+			&::placeholder {
+				color: @disabled-color-base;
+			}
+		}
+	}
+	&__inner {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: @padding-small @padding-base;
+		background-color: @color-white;
+		border: @border-base;
+		border-radius: @input-border-radius;
+		box-shadow: none;
+		transition: box-shadow .2s linear, border .2s linear;
+		z-index: 1;
+		&:hover {
+			border-color: @color-border-active;
+		}
+		&.dol-textarea--focused {
+			border-color: @color-border-active;
+			box-shadow: @box-shadow;
+		}
+	}
+	&__action {
+		width: 100%;
+		line-height: 1.5;
+		outline: none;
+		border: none;
+		font-size: inherit;
+		color: inherit;
+		&::placeholder {
+			color: @color-text-placeholder;
+		}
+	}
+	&__clear {
+		position: absolute;
+		top: 7px;
+		right: 15px;
+		cursor: pointer;
+		&:hover {
+			color: @input-clear-hover-color;
+		}
+	}
+	&__count {
+		position: absolute;
+		bottom: 5px;
+		right: 30px;
+		font-size: @font-size-extra-small;
+		color: @color-text-secondary;
+	}
+}

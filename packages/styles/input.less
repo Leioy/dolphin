@@ -134,13 +134,19 @@
 	}
 	&__suffix {
 		margin-right: @padding-small;
-		.dol-icon-circle-close {
+		.dol-input__clear {
+			margin: 0 4px;
+		}
+		.dol-input__clear,.dol-input__view {
 			cursor: pointer;
 			color: @input-icon-color;
 			transition: color .2s linear;
 			&:hover {
 				color: @input-clear-hover-color;
 			}
+		}
+		.dol-input__count {
+			color: @input-count-color;
 		}
 	}
 }
