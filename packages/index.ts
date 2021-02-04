@@ -7,9 +7,11 @@ import TabPane from './tab-pane'
 import Switch from './switch'
 import Input from './input'
 import Textarea from './text-area'
+import Radio from './radio'
+import RadioGroup from './radio-group'
 
 const components = [
-	Button, Icon, ButtonGroup, Tabs, TabPane,Switch,Input,Textarea
+	Button, Icon, ButtonGroup, Tabs, TabPane, Switch, Input, Textarea, Radio, RadioGroup,
 ]
 const install = (app: App) => {
 	components.forEach(component => {
@@ -27,5 +29,7 @@ export {
 	TabPane,
 	Switch,
 	Input,
-	Textarea
+	Textarea,
+	Radio,
+	RadioGroup,
 }

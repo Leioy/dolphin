@@ -5,6 +5,7 @@ import Tabs from 'examples/components/tabs.vue'
 import Switch from 'examples/components/switch.vue'
 import Input from 'examples/components/input.vue'
 import Textarea from 'examples/components/text-area.vue'
+import Radio from 'examples/components/radio.vue'
 
 const routes: RouteRecordRaw[] = [
 	{ path: '/icon', component: Icon },
@@ -13,6 +14,7 @@ const routes: RouteRecordRaw[] = [
 	{ path: '/switch', component: Switch },
 	{ path: '/input', component: Input },
 	{ path: '/textarea', component: Textarea },
+	{ path: '/radio', component: Radio },
 ]
 const router = createRouter({
 	history: createWebHashHistory(),

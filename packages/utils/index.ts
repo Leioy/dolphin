@@ -1,5 +1,1 @@
-import { Ref } from 'vue';
-
-export function $<T> (ref: Ref<T>) {
-	return ref.value
-}
+export const UPDATE_MODEL_EVENT = 'update:modelValue'

@@ -11,7 +11,7 @@
 @color-text-placeholder: #bfbfbf;
 @color-text-disabled: #939599;
 @color-border-base: #dcdee2;
-@color-border-active: #2b85e4;
+@color-border-active: @color-primary;
 @color-border-disabled: #dcdee2;
 
 // background
@@ -56,7 +56,11 @@
 @input-border-radius: @border-radius-small;
 @input-icon-color: @color-text-placeholder;
 @input-clear-hover-color: @color-text-secondary;
-@input-count-color:@color-text-secondary;
+@input-count-color: @color-text-secondary;
+
+//radio
+@radio-background-disabled-color:@color-text-disabled;
+
 //shadow
 @box-shadow: 0 0 0 2px rgba(45, 140, 240, .2);
 
@@ -67,6 +71,18 @@
 	}
 	100% {
 		transform: rotate(360deg);
+	}
+}
+
+
+@keyframes radioEffect {
+	0% {
+		transform: scale(1);
+		opacity: 0.5;
+	}
+	100% {
+		transform: scale(2);
+		opacity: 0;
 	}
 }
 

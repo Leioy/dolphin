@@ -6,6 +6,7 @@
 		<router-link to="/switch">switch</router-link>
 		<router-link to="/input">input</router-link>
 		<router-link to="/textarea">textarea</router-link>
+		<router-link to="/radio">radio</router-link>
 		<router-view></router-view>
 	</div>
 </template>
