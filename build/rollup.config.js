@@ -22,7 +22,7 @@ export default {
 		typescript({
 			tsconfig: path.resolve(__dirname, '../tsconfig.json'),
 			tsconfigOverride: {
-				'include': ['packages/**/*', 'typings/vue-shim.d.ts'],
+				'include': ['packages/**/*', 'typings/**/*'],
 			},
 		}),
 		progress()

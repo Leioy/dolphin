@@ -3,7 +3,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, getCurrentInstance, inject, nextTick, ref, watch } from 'vue'
-import { TActiveIndex } from './tabs.vue'
+import { TActiveIndex } from 'typings'
 
 export default defineComponent({
 	name: 'DolTabBar',
@@ -26,9 +26,9 @@ export default defineComponent({
 			const $nav = instance?.parent?.refs.$nav as HTMLDivElement
 			const navList = $nav.querySelectorAll('.dol-tabs__item')
 			const activeNav = navList[activeIndex.value]
-			const { width, paddingLeft,paddingRight } = getComputedStyle(activeNav);
-			(tabBar.value as HTMLDivElement).style.width = parseFloat(width) - parseFloat(paddingLeft) -parseFloat(paddingRight) + 'px';
-			(tabBar.value as HTMLDivElement).style.transform =`translateX(${getUnActiveNavWidth(navList) + parseFloat(paddingLeft)}px)`
+			const { width, paddingLeft, paddingRight } = getComputedStyle(activeNav);
+			(tabBar.value as HTMLDivElement).style.width = parseFloat(width) - parseFloat(paddingLeft) - parseFloat(paddingRight) + 'px';
+			(tabBar.value as HTMLDivElement).style.transform = `translateX(${getUnActiveNavWidth(navList) + parseFloat(paddingLeft)}px)`
 		}
 		watch(() => activeIndex.value, () => {
 			nextTick(() => {

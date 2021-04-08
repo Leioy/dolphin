@@ -16,17 +16,9 @@ import {
 	watch,
 } from 'vue'
 import TabNav from './tab-nav.vue'
+import { TPane,TPaneProps } from 'typings'
 
-type TPaneProps = {
-	label: string
-	name: string
-}
-export type TPane = {
-	uid: number
-	props: TPaneProps
-}
 
-export type TActiveIndex = Ref<number>
 export default defineComponent({
 	name: 'DolTabs',
 	props: {

@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, h, inject, PropType } from 'vue'
 import TabBar from './tab-bar.vue'
-import { TActiveIndex, TPane } from 'packages/tabs/src/tabs.vue'
+import { TActiveIndex, TPane } from 'typings'
 
 export default defineComponent({
 	name: 'DolTabNav',
