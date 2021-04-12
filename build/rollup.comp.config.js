@@ -12,7 +12,7 @@ function isDir (dir) {
 
 const packages = {};
 const dir = path.join(__dirname, '../packages');
-const files = fs.readdirSync(dir).filter(name => !name.includes('styles'))
+const files = fs.readdirSync(dir).filter(name => !name.includes('styles') && !name.includes('hooks') && !name.includes('test-utils'))
 files.forEach(file => {
 	const absolutePath = path.join(dir, file);
 	if (isDir(absolutePath)) {
